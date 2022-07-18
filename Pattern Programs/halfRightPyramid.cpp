@@ -1,3 +1,13 @@
+/*
+Program to print the following pattern:
+   *
+  **
+ ***
+****
+based on the number of rows entered by the user.
+*/
+
+
 #include <iostream>
 using namespace std;
 

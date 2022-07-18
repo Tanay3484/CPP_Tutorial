@@ -1,3 +1,15 @@
+/*
+Program to print a inverted pyramid pattern based on the number of rows entered by the user.
+e.g. for rows = 5, the pattern will be:
+*****
+****
+***
+**
+*
+*/
+
+
+
 #include <iostream>
 using namespace std;
 

@@ -1,3 +1,14 @@
+/*
+Program to print a palindromic pyramid based on the number of rows given for the user.
+e.g. for rows = 4, the pattern will be:
+   1
+  212
+ 32123
+4321234
+*/
+
+
+
 #include <iostream>
 using namespace std;
 

@@ -1,3 +1,14 @@
+/*
+Program to print a hollow rectangle pattern based on the number of rows entered by the user.
+e.g. for rows = 4 and columns = 5, the pattern will be:
+*****
+*   *
+*   *
+*****
+*/
+
+
+
 #include <iostream>
 using namespace std;
 

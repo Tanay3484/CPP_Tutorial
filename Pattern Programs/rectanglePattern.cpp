@@ -1,3 +1,7 @@
+/*
+Program to print a rectangle based on the length and breadth entered by the user.
+*/
+
 #include <iostream>
 using namespace std;
 

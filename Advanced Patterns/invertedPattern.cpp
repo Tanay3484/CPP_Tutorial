@@ -1,3 +1,11 @@
+/*
+Program to print a inverted triangle with decreasing numbers based on the number of rows entered by the user.
+e.g. for rows = 3, the pattern will be:
+123
+12
+1
+*/
+
 #include <iostream>
 using namespace std;
 

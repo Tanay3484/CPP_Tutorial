@@ -1,3 +1,17 @@
+/*
+Program to form the following pattern:
+*      *
+**    **
+***  ***
+********
+********
+***  ***
+**    **
+*      *
+*/
+
+
+
 #include <iostream>
 using namespace std;
 

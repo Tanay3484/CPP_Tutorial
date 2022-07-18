@@ -1,3 +1,13 @@
+/*
+Program to print a 01 triangle with alternating 0 and 1 based on the input from the user for the number of rows.
+e.g.
+for rows = 3
+1 
+0 1 
+1 0 1 
+*/
+
+
 #include <iostream>
 using namespace std;
 
