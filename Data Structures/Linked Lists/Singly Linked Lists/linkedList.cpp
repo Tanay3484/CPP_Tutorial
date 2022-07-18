@@ -151,6 +151,23 @@ void deleteAtPosition(node *&head, int n)
     }
 }
 
+// Reverse linked list
+// Refrence Image : https://media.geeksforgeeks.org/wp-content/cdn-uploads/RGIF2.gif
+void reverseList(node *&head)
+{
+    node *prev = NULL;
+    node *next = NULL;
+    node *curr = head;
+    while (curr != NULL)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    head = prev;
+}
+
 // Print the list elements
 void display(node *&head)
 {
@@ -160,25 +177,26 @@ void display(node *&head)
         cout << temp->data << "-->";
         temp = temp->next;
     }
-    cout<<"NULL";
+    cout << "NULL";
     cout << endl;
     return;
 }
 
-//Print the menu
+// Print the menu
 void displayMenu()
 {
     system("cls");
-    cout << "\033[2J\033[1;1H"; //string sequence to clear the screen
+    cout << "\033[2J\033[1;1H"; // string sequence to clear the screen
     cout << "**************************MENU***************************" << endl;
     cout << "1. Insert element at the start" << endl;
     cout << "2. Insert element at the end" << endl;
     cout << "3. Insert element at a given position" << endl;
-    cout << "4. Display the list" << endl;
-    cout << "5. Delete element at the start" << endl;
-    cout << "6. Delete element at the end" << endl;
-    cout << "7. Delete element at a given position" << endl;
-    cout << "8. Exit" << endl;
+    cout << "4. Reverse the list" << endl;
+    cout << "5. Display the list" << endl;
+    cout << "6. Delete element at the start" << endl;
+    cout << "7. Delete element at the end" << endl;
+    cout << "8. Delete element at a given position" << endl;
+    cout << "9. Exit" << endl;
     cout << "**********************************************************" << endl;
     cout << endl;
 }
@@ -187,12 +205,12 @@ int main()
 {
     node *head = NULL;
     int choice = 1; // dummy value for choice
-    while (choice >= 1 && choice <= 8)
+    while (choice >= 1 && choice <= 9)
     {
         displayMenu();
         cout << "Enter your choice : " << endl;
         cin >> choice;
-        if (choice < 0 || choice > 8) //checking if the choice entered is correct or not
+        if (choice < 0 || choice > 9) // checking if the choice entered is correct or not
         {
             bool flag = false;
             while (flag != true)
@@ -232,12 +250,18 @@ int main()
             insertAtPosition(head, val, position);
         }
         else if (choice == 4)
+        {
+            reverseList(head);
+            cout << "After reversing, the list is : " << endl;
             display(head);
+        }
         else if (choice == 5)
-            deleteAtHead(head);
+            display(head);
         else if (choice == 6)
-            deleteAtTail(head);
+            deleteAtHead(head);
         else if (choice == 7)
+            deleteAtTail(head);
+        else if (choice == 8)
         {
             int position;
             cout << "Enter the position to be deleted : ";
