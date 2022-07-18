@@ -117,7 +117,38 @@ void deleteAtTail(node* &head)
     free(temp2);
     temp2 = NULL;
     return ;
-}   
+}
+
+//Delete at a given position
+void deleteAtPosition(node* &head,int n)
+{
+    if(n==1)
+    {
+        deleteAtHead(head);
+        return ;
+    }
+    if(n==listLength(head))
+    {
+        deleteAtTail(head);
+        return ;
+    }
+    else
+    {
+        node* temp = head;
+        node* prevNode = NULL;
+        node* nextNode = NULL;
+        for(int i = 1;i<n;i++)
+        {
+            prevNode = temp;
+            temp = temp->next;
+        }
+        nextNode = temp->next;
+        prevNode->next = nextNode;
+        cout<<"Deleted : "<<temp->data<<endl;
+        free(temp);
+        temp = NULL;
+    }
+}
 
 //Print the list elements
 void display(node* &head)
