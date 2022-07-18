@@ -109,7 +109,7 @@ void deleteAtHead(node* &head)
 void deleteAtTail(node* &head)
 {
     node* temp1 = head;
-    while(temp1->next!=NULL)
+    while(temp1->next->next!=NULL)
         temp1 = temp1->next;
     node* temp2 = temp1->next;
     temp1->next = NULL;
