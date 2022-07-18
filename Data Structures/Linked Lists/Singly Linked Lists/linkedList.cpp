@@ -100,7 +100,7 @@ void deleteAtHead(node* &head)
     node* temp = head;
     head = temp->next;
     cout<<"Deleted : "<<temp->data<<endl;
-    free(temp);
+    delete temp;
     temp = NULL;
     return ;
 }
@@ -114,7 +114,7 @@ void deleteAtTail(node* &head)
     node* temp2 = temp1->next;
     temp1->next = NULL;
     cout<<"Deleted: "<<temp2->data<<endl;
-    free(temp2);
+    delete temp2;
     temp2 = NULL;
     return ;
 }
@@ -145,7 +145,7 @@ void deleteAtPosition(node* &head,int n)
         nextNode = temp->next;
         prevNode->next = nextNode;
         cout<<"Deleted : "<<temp->data<<endl;
-        free(temp);
+        delete temp;
         temp = NULL;
     }
 }
