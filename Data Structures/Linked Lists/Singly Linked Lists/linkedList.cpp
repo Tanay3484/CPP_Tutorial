@@ -168,18 +168,71 @@ void reverseList(node *&head)
     head = prev;
 }
 
+// swap two nodes without swapping data
+void swapNodes(node *&head, int x, int y)
+{
+    if (x == y)
+    {
+        cout << "Same nodes cannot be swapped" << endl;
+        return;
+    }
+
+    // Searching for the X node
+    node *prevX = NULL, *currX = head;
+    while (currX && currX->data != x)
+    {
+        prevX = currX;
+        currX = currX->next;
+    }
+
+    // Searching for the Y node
+    node *prevY = NULL, *currY = head;
+    while (currY && currY->data != y)
+    {
+        prevY = currY;
+        currY = currY->next;
+    }
+
+    // Checking if X is the current head
+    if (prevX != NULL)
+        prevX->next = currY;
+    else
+        head = currY;
+
+    // Checking if Y is the current head
+    if (prevY != NULL)
+        prevY->next = currX;
+    else
+        head = currX;
+
+    // Swap the next pointers
+    node *temp = currY->next;
+    currY->next = currX->next;
+    currX->next = temp;
+
+    return;
+}
+
 // Print the list elements
 void display(node *&head)
 {
     node *temp = head;
-    while (temp != NULL)
+    if (head == NULL)
     {
-        cout << temp->data << "-->";
-        temp = temp->next;
+        cout << "NULL" << endl;
+        return;
     }
-    cout << "NULL";
-    cout << endl;
-    return;
+    else
+    {
+        while (temp != NULL)
+        {
+            cout << temp->data << "-->";
+            temp = temp->next;
+        }
+        cout << "NULL";
+        cout << endl;
+        return;
+    }
 }
 
 // Print the menu
@@ -196,7 +249,8 @@ void displayMenu()
     cout << "6. Delete element at the start" << endl;
     cout << "7. Delete element at the end" << endl;
     cout << "8. Delete element at a given position" << endl;
-    cout << "9. Exit" << endl;
+    cout << "9. Swap two nodes" << endl;
+    cout << "10. Exit" << endl;
     cout << "**********************************************************" << endl;
     cout << endl;
 }
@@ -205,19 +259,21 @@ int main()
 {
     node *head = NULL;
     int choice = 1; // dummy value for choice
-    while (choice >= 1 && choice <= 9)
+    while (choice >= 1 && choice <= 10)
     {
         displayMenu();
         cout << "Enter your choice : " << endl;
         cin >> choice;
-        if (choice < 0 || choice > 9) // checking if the choice entered is correct or not
+        cout << "The current list is as follows : " << endl;
+        display(head);
+        if (choice < 0 || choice > 10) // checking if the choice entered is correct or not
         {
             bool flag = false;
             while (flag != true)
             {
-                cout << "Please enter a value of choice between 1 and 8 : ";
+                cout << "Please enter a value of choice between 1 and 10 : ";
                 cin >> choice;
-                if (choice >= 1 && choice <= 8)
+                if (choice >= 1 && choice <= 10)
                     flag = true;
             }
         }
@@ -268,6 +324,17 @@ int main()
             cin >> position;
             cout << endl;
             deleteAtPosition(head, position);
+        }
+        else if (choice == 9)
+        {
+            int x1, y1;
+            cout << "Enter the data values to be swapped : ";
+            cin >> x1 >> y1;
+            cout << "Before swapping the nodes : " << endl;
+            display(head);
+            swapNodes(head, x1, y1);
+            cout << "After swapping the nodes : " << endl;
+            display(head);
         }
         int ch;
         cout << "Do you want to continue?1 for yes and 0 for no : ";
