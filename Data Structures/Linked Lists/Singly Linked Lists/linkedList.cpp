@@ -213,6 +213,28 @@ void swapNodes(node *&head, int x, int y)
     return;
 }
 
+//Reverse K nodes 
+node* reverseK(node* &head,int k){
+    node* prev = NULL;
+    node* curr = head;
+    node* nextPtr;
+
+    int count = 0;
+    while(curr!=NULL && count<k)
+    {
+        nextPtr = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextPtr;
+        count++;
+    }
+
+    if(nextPtr!=NULL){
+        head->next = reverseK(nextPtr,k);
+    }
+    return prev;
+}
+
 // Print the list elements
 void display(node *&head)
 {
